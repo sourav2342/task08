@@ -5,9 +5,9 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   dns_prefix          = var.dns_prefix
 
   default_node_pool {
-    name       = "system"
-    node_count = var.node_count
-    vm_size    = var.vm_size
+    name         = "system"
+    node_count   = var.node_count
+    vm_size      = var.vm_size
     os_disk_type = "Ephemeral"
   }
 
@@ -15,7 +15,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     type = "SystemAssigned"
   }
 
-  key_vault_secrets_provider{
+  key_vault_secrets_provider {
     secret_rotation_enabled = true
   }
 
@@ -50,11 +50,11 @@ resource "azurerm_key_vault_access_policy" "aks_kv_access" {
   object_id = data.azurerm_client_config.current.object_id
 
   key_permissions = [
-    "Get","List",
+    "Get", "List",
   ]
 
   secret_permissions = [
-    "Get","List",
+    "Get", "List",
   ]
 }
 

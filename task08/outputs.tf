@@ -6,5 +6,5 @@ output "aci_fqdn" {
 output "aks_lb_ip" {
   description = "Load Balancer IP address of the App running in AKS"
   value       = module.aks.kube_config
-  sensitive = true
+  sensitive   = true
 }
