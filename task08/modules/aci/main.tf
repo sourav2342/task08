@@ -1,13 +1,3 @@
-data "azurerm_key_vault_secret" "redis_hostname" {
-  name         = "redis-hostname"
-  key_vault_id = var.key_vault_id
-}
-
-data "azurerm_key_vault_secret" "redis_primary_key" {
-  name         = "redis-primary-key"
-  key_vault_id = var.key_vault_id
-}
-
 resource "azurerm_container_group" "container" {
   name                = var.container_group_name
   location            = var.location
@@ -30,8 +20,10 @@ resource "azurerm_container_group" "container" {
     }
 
     secure_environment_variables = {
-      REDIS_URL = data.azurerm_key_vault_secret.redis_hostname.value
-      REDIS_PWD = data.azurerm_key_vault_secret.redis_primary_key.value
+      # REDIS_URL = data.azurerm_key_vault_secret.redis_hostname.value
+      # REDIS_PWD = data.azurerm_key_vault_secret.redis_primary_key.value
+      REDIS_URL = var.redis_hostname
+      REDIS_PWD = var.redis_primary_key
     }
 
     ports {

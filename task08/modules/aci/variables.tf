@@ -48,11 +48,6 @@ variable "tags" {
   description = "creator tag"
 }
 
-variable "key_vault_id" {
-  type        = string
-  description = "value"
-}
-
 variable "dns_name_label" {
   type        = string
   description = "value"
@@ -66,4 +61,17 @@ variable "resource_group_name" {
 variable "location" {
   description = "value"
   type        = string
+}
+
+
+
+variable "redis_hostname" {
+  type        = string
+  description = "Redis hostname for the application"
+}
+
+variable "redis_primary_key" {
+  type        = string
+  sensitive   = true
+  description = "Primary access key for Redis"
 }
