@@ -24,7 +24,7 @@ resource "azurerm_key_vault_access_policy" "aks_app_access" {
   object_id = "13e3397f-400c-4f58-a066-b7c9f9e18f94"
 
   key_permissions = []
-  
+
   secret_permissions = [
     "Get",
     "List"
