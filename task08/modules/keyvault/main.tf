@@ -17,3 +17,16 @@ resource "azurerm_key_vault" "this" {
 
 data "azurerm_client_config" "current" {}
 
+resource "azurerm_key_vault_access_policy" "aks_app_access" {
+  key_vault_id = azurerm_key_vault.this.id
+
+  tenant_id = data.azurerm_client_config.current.tenant_id
+  object_id = "13e3397f-400c-4f58-a066-b7c9f9e18f94"
+
+  key_permissions = []
+  
+  secret_permissions = [
+    "Get",
+    "List"
+  ]
+}
